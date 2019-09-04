@@ -36,7 +36,7 @@ steps:
   displayName: 'npm install and build'
 - task: AzureFileCopy@3
   inputs:
-    SourcePath: dist/vm-app
+    SourcePath: 'dist'
     azureSubscription: 'Azure VM Prod'
     Destination: 'AzureBlob'
     storage: 'volleymgmtprod'
