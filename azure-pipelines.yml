@@ -29,13 +29,11 @@ steps:
 - script: |
     npm install -g @angular/cli
     npm install
-    ng build --prod --outputPath $(Build.StagingDirectory)
-    ls $(Build.StagingDirectory)
-    ls '$(Build.StagingDirectory)/vm-app'
+    ng build --prod
   displayName: 'npm install and build'
 - task: AzureFileCopy@3
   inputs:
-    SourcePath: '$(Build.StagingDirectory)'
+    SourcePath: dist/vm-app
     azureSubscription: 'Azure VM Prod'
     Destination: 'AzureBlob'
     storage: 'volleymgmtprod'
