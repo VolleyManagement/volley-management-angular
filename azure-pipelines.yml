@@ -34,7 +34,7 @@ steps:
 - task: AzureFileCopy@3
   inputs:
     SourcePath: '$(Build.StagingDirectory)/vm-app'
-    ConnectedServiceNameARM: 'Azure VM Prod'
+    azureSubscription: 'Azure VM Prod'
     Destination: 'AzureBlob'
     storage: 'volleymgmtprod'
     ContainerName: '$web'
