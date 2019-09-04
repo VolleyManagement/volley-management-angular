@@ -45,7 +45,7 @@ steps:
 
 - task: AzureFileCopy@3
   inputs:
-    SourcePath: 'dist'
+    SourcePath: 'dist/vm-app'
     azureSubscription: 'Azure VM Prod'
     Destination: 'AzureBlob'
     storage: 'volleymgmtprod'
