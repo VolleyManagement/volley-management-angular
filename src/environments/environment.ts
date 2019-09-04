@@ -5,7 +5,11 @@
 export const environment = {
   dev: true,
   staging: false,
-  production: false
+  production: false,
+  auth0: {
+    domain: 'volley-mgmt-dev.eu.auth0.com',
+    clientId: 'wl8fSLi1sb6LcE17uviU3iX4CSqX1X7Y'
+  }
 };
 
 /*
