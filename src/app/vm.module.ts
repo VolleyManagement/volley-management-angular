@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { VmRoutingModule } from './vm-routing.module';
 import { VmComponent as VmComponent } from './vm.component';
 import { NavbarComponent } from './core/navbar/navbar.component';
+import { AuthCallbackComponent } from './auth/auth-callback.component';
 
 @NgModule({
   declarations: [
     VmComponent,
-    NavbarComponent
+    NavbarComponent,
+    AuthCallbackComponent
   ],
   imports: [
     BrowserModule,
