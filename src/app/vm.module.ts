@@ -6,6 +6,7 @@ import { VmComponent as VmComponent } from './vm.component';
 import { NavbarComponent } from './core/navbar/navbar.component';
 import { AuthCallbackComponent } from './auth/auth-callback.component';
 import { ProfileComponent } from './core/profile/profile.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ProfileComponent } from './core/profile/profile.component';
   ],
   imports: [
     BrowserModule,
-    VmRoutingModule
+    VmRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [VmComponent]

@@ -1,8 +1,10 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
 import { AuthCallbackComponent } from './auth/auth-callback.component';
-import { ProfileComponent } from './core/profile/profile.component';
 import { AuthGuard } from './auth/auth.guard';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorService } from './auth/interceptor.service';
+import { NgModule } from '@angular/core';
+import { ProfileComponent } from './core/profile/profile.component';
+import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -18,6 +20,13 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }
+  ]
 })
 export class VmRoutingModule { }
