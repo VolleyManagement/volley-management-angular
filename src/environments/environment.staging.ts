@@ -4,6 +4,7 @@ export const environment = {
   production: false,
   auth0: {
     domain: 'volley-mgmt-staging.eu.auth0.com',
-    clientId: '6DcQxExyHImqlmX9bAXkqqeJ8Zaqq2KK'
+    clientId: '6DcQxExyHImqlmX9bAXkqqeJ8Zaqq2KK',
+    audience: 'https://api.staging.volley-mgmt.org.ua'
   }
 };
