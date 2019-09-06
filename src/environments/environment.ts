@@ -10,6 +10,9 @@ export const environment = {
     domain: 'volley-mgmt-dev.eu.auth0.com',
     clientId: 'wl8fSLi1sb6LcE17uviU3iX4CSqX1X7Y',
     audience: 'https://api.dev.volley-mgmt.org.ua'
+  },
+  vmApi:{
+    baseUrl: 'http://localhost:5000'
   }
 };
 
