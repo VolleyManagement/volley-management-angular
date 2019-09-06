@@ -5,12 +5,14 @@ import { VmRoutingModule } from './vm-routing.module';
 import { VmComponent as VmComponent } from './vm.component';
 import { NavbarComponent } from './core/navbar/navbar.component';
 import { AuthCallbackComponent } from './auth/auth-callback.component';
+import { ProfileComponent } from './core/profile/profile.component';
 
 @NgModule({
   declarations: [
     VmComponent,
     NavbarComponent,
-    AuthCallbackComponent
+    AuthCallbackComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
