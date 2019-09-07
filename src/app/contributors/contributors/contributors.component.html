@@ -1,0 +1,15 @@
+<p>contributors works!</p>
+<h2>Public Contributors</h2>
+<button (click)="getPublic()">Load</button>
+<ul>
+  <li *ngFor="let con of publicContributors">
+    {{ con.fullName }} | {{ con.team }} | {{ con.courseDirection }}
+  </li>
+</ul>
+<h2>Protected Contributors</h2>
+<button (click)="getProtected()">Load</button>
+<ul>
+  <li *ngFor="let con of protectedContributors">
+    {{ con.fullName }} | {{ con.team }} | {{ con.courseDirection }}
+  </li>
+</ul>
