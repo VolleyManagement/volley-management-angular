@@ -7,13 +7,15 @@ import { NavbarComponent } from './core/navbar/navbar.component';
 import { AuthCallbackComponent } from './auth/auth-callback.component';
 import { ProfileComponent } from './core/profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ContributorsComponent } from './contributors/contributors/contributors.component';
 
 @NgModule({
   declarations: [
     VmComponent,
     NavbarComponent,
     AuthCallbackComponent,
-    ProfileComponent
+    ProfileComponent,
+    ContributorsComponent
   ],
   imports: [
     BrowserModule,

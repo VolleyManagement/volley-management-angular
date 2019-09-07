@@ -5,6 +5,7 @@ import { InterceptorService } from './auth/interceptor.service';
 import { NgModule } from '@angular/core';
 import { ProfileComponent } from './core/profile/profile.component';
 import { Routes, RouterModule } from '@angular/router';
+import { ContributorsComponent } from './contributors/contributors/contributors.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'contributors',
+    component: ContributorsComponent
   }
 ];
 
