@@ -55,6 +55,16 @@ stages:
             ArtifactName: 'volleyM-angular.app'
             publishLocation: 'Container'
 
+        - task: UniversalPackages@0
+          inputs:
+            command: 'publish'
+            publishDirectory: '$(Build.ArtifactStagingDirectory)'
+            feedsToUsePublish: 'internal'
+            vstsFeedPublish: '9b3ded99-cb46-49c1-a300-5a7bd56461a5'
+            vstsFeedPackagePublish: 'volleym-angular-app'
+            versionOption: 'patch'
+            packagePublishDescription: 'volleym-angular-app'
+
   # - stage: staging
   #   displayName: 'Integration'
   #   jobs:
