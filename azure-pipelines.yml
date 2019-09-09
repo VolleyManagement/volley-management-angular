@@ -69,7 +69,7 @@ stages:
               buildType: 'current'
               downloadType: 'single'
               downloadPath: '$(System.ArtifactsDirectory)'
-              artifactName: 'drop'
+              artifactName: 'volleyM-angular-app'
           - task: Npm@1
             inputs:
               command: 'custom'
