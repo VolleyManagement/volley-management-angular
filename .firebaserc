@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "volley-management-sd"
+  },
+  "targets": {
+    "volley-management-sd": {
+      "hosting": {
+        "staging": [
+          "staging-volley-mgmt"
+        ],
+        "prod": [
+          "volley-mgmt"
+        ]
+      }
+    }
+  }
+}
