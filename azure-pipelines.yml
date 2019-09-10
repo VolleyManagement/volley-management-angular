@@ -68,7 +68,7 @@ stages:
             inputs:
               buildType: 'current'
               downloadType: 'single'
-              downloadPath: '$(System.ArtifactsDirectory)'
+              downloadPath: 'dist/vm-app'
               artifactName: 'volleyM-angular-app'
           - task: Npm@1
             inputs:
@@ -78,7 +78,7 @@ stages:
           - task: PowerShell@2
             inputs:
               targetType: inline
-              script: firebase deploy --only hosting:staging -p $(System.ArtifactsDirectory)
+              script: firebase deploy --only hosting:staging
             env:
               FIREBASE_TOKEN: $(vm_angular_firebase_token)
             displayName: 'Deploy Firebase'
