@@ -68,7 +68,7 @@ stages:
             inputs:
               buildType: 'current'
               downloadType: 'single'
-              downloadPath: 'dist/vm-app'
+              downloadPath: './dist/vm-app'
               artifactName: 'volleyM-angular-app'
           - task: Npm@1
             inputs:
