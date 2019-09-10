@@ -52,7 +52,7 @@ stages:
         - task: PublishBuildArtifacts@1
           inputs:
             PathtoPublish: 'dist/vm-app'
-            ArtifactName: 'volleyM-angular-app'
+            ArtifactName: 'vm-app'
             publishLocation: 'Container'
 
   - stage: staging
@@ -68,8 +68,8 @@ stages:
             inputs:
               buildType: 'current'
               downloadType: 'single'
-              downloadPath: './dist/vm-app'
-              artifactName: 'volleyM-angular-app'
+              downloadPath: './dist'
+              artifactName: 'vm-app'
           - task: Npm@1
             inputs:
               command: 'custom'
