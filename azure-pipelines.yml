@@ -78,7 +78,11 @@ stages:
           - task: PowerShell@2
             inputs:
               targetType: inline
-              script: firebase deploy --only hosting:staging
+              script: |
+                Write-Host 'List all'
+                ls dist/vm-app
+                ls './dist/vm-app'
+                firebase deploy --only hosting:staging
             env:
               FIREBASE_TOKEN: $(vm_angular_firebase_token)
             displayName: 'Deploy Firebase'
