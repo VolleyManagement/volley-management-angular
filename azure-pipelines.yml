@@ -17,36 +17,74 @@ pr:
     include:
     - master
 
-pool:
-  vmImage: 'windows-2019'
+stages:
+  - stage: build
+    displayName: "Build"
+    jobs:
+      - job: build
+        displayName: 'Build Angualr App'
+        pool:
+          vmImage: 'windows-2019'
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
+        steps:
+        - task: NodeTool@0
+          inputs:
+            versionSpec: '10.x'
+          displayName: 'Install Node.js'
 
-- task: Npm@1
-  inputs:
-    command: 'custom'
-    customCommand: 'install -g @angular/cli'
-  displayName: 'Install NG CLI'
+        - task: Npm@1
+          inputs:
+            command: 'custom'
+            customCommand: 'install -g @angular/cli'
+          displayName: 'Install NG CLI'
 
-- task: Npm@1
-  inputs:
-    command: 'install'
-  displayName: 'npm install'
+        - task: Npm@1
+          inputs:
+            command: 'install'
+          displayName: 'npm install'
 
-- task: PowerShell@2
-  inputs:
-    targetType: inline
-    script: ng build --prod
-  displayName: 'build'
+        - task: PowerShell@2
+          inputs:
+            targetType: inline
+            script: ng build -c=staging
+          displayName: 'build'
 
-- task: AzureFileCopy@3
-  inputs:
-    SourcePath: 'dist/vm-app'
-    azureSubscription: 'Azure VM Prod'
-    Destination: 'AzureBlob'
-    storage: 'volleymgmtprod'
-    ContainerName: '$web'
+        - task: PublishBuildArtifacts@1
+          inputs:
+            PathtoPublish: 'dist/vm-app'
+            ArtifactName: 'vm-app'
+            publishLocation: 'Container'
+
+  - stage: staging
+    displayName: 'Integration'
+    jobs:
+      - job: deploy_staging
+        pool:
+          vmImage: 'windows-2019'
+        displayName: 'Deploy Staging Firebase'
+        steps:
+          - task: DownloadBuildArtifacts@0
+            displayName: 'Download Build results'
+            inputs:
+              buildType: 'current'
+              downloadType: 'single'
+              downloadPath: './dist'
+              artifactName: 'vm-app'
+          - task: Npm@1
+            inputs:
+              command: 'custom'
+              customCommand: 'install -g firebase-tools'
+            displayName: 'Install Firebase CLI'
+          - task: PowerShell@2
+            inputs:
+              targetType: inline
+              script: |
+                Write-Host 'List all'
+                ls dist/vm-app
+                ls './dist/vm-app'
+                firebase deploy --only hosting:staging
+            env:
+              FIREBASE_TOKEN: $(vm_angular_firebase_token)
+            displayName: 'Deploy Firebase'
+
+
